@@ -1,12 +1,10 @@
 package com.github.damianwajser.exceptions.model;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
-import com.fasterxml.jackson.annotation.JsonCreator;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
-import org.springframework.util.Assert;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -21,23 +19,22 @@ public class ExceptionDetail implements Serializable {
 	private static final long serialVersionUID = 1905128741950251207L;
 
 	@JsonAlias({"error_code", "errorCode"})
-	private final String errorCode;
+	private String errorCode;
 
 	@JsonAlias({"error_detail", "errorDetail"})
-	private final Optional<Object> errorDetail;
+	private Optional<Object> errorDetail;
 
 	@JsonAlias({"error_message", "errorMessage"})
 	private String errorMessage;
 
-	@JsonAlias({"meta_data", "metaData"})
+	@JsonAlias({"meta_data", "metaData", "metadata"})
 	private Map<String, Object> metaData;
 
-	@JsonCreator
-	public ExceptionDetail(@JsonAlias({"error_code", "errorCode"}) String errorCode,
-						   @JsonAlias({"error_message", "errorMessage"}) String errorMessage,
-						   @JsonAlias({"error_detail", "errorDetail"}) Optional<Object> detail) {
-		Assert.notNull(errorCode, "errorCode dont be null");
-		Assert.notNull(errorMessage, "errorMessage dont be null");
+	public ExceptionDetail(){}
+
+	public ExceptionDetail(String errorCode,
+						   String errorMessage,
+						   Optional<Object> detail) {
 		this.errorCode = errorCode;
 		this.errorMessage = errorMessage;
 		this.errorDetail = detail;

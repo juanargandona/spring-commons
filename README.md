@@ -2,7 +2,7 @@
 ## Overview
 This project contains the general-purpose tools to spring.  Project is licensed under [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 
-[![Build Status](https://api.travis-ci.com/damianwajser/spring-commons.svg?branch=master)](https://travis-ci.com/damianwajser/spring-commons) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.damianwajser/spring-commons/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.damianwajser/spring-commons) [![Maintainability](https://api.codeclimate.com/v1/badges/b3439fa46cd3387eebff/maintainability)](https://codeclimate.com/github/damianwajser/spring-rest-commons-options/maintainability)
+[![Build Status](https://api.travis-ci.com/damianwajser/spring-commons.svg?branch=master)](https://travis-ci.com/damianwajser/spring-commons) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.damianwajser/spring-commons/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.damianwajser/spring-commons) [![Maintainability](https://api.codeclimate.com/v1/badges/b3439fa46cd3387eebff/maintainability)](https://codeclimate.com/github/damianwajser/spring-commons/maintainability)
 [![alert_status](https://sonarcloud.io/api/project_badges/measure?project=damian_wajser-spring-commons&metric=alert_status)](https://sonarcloud.io/dashboard?id=damian_wajser-spring-commons) [![coverage](https://sonarcloud.io/api/project_badges/measure?project=damian_wajser-spring-commons&metric=coverage)](https://sonarcloud.io/dashboard?id=damian_wajser-spring-commons)
 
 -----
@@ -128,7 +128,7 @@ Among its features we find:
 
 This module configures the connector to logstash async way.
 
-## 8 [spring-commons-cache](https://github.com/damianwajser/spring-commons/tree/master/spring-commons-idempotency "spring-commons-cache")
+## 8 [spring-commons-cache](https://github.com/damianwajser/spring-commons/tree/master/spring-commons-cache "spring-commons-cache")
 
 This module tries to solve the typical problems that we encounter when we use Redis as Cache in spring.
 Configure:
@@ -142,7 +142,7 @@ This module tries to solve the problems associated with idempotence. For them, c
  1. The first request finished executing, which returns the same response that was obtained in the first call.
  2. In case the first request is still running, a message will be returned indicating the conflict.
 
-## 9 [spring-commons-actuator](https://github.com/damianwajser/spring-commons/tree/master/spring-commons-actuator "spring-commons-actuator")
+## 10 [spring-commons-actuator](https://github.com/damianwajser/spring-commons/tree/master/spring-commons-actuator "spring-commons-actuator")
 
 ````xml
 <plugin>
@@ -166,6 +166,25 @@ This module tries to solve the problems associated with idempotence. For them, c
     </configuration>
 </plugin>
 ````
+## 11 [spring-commons-payment-utilities](https://github.com/damianwajser/spring-commons/tree/master/spring-commons-payment-utilities "spring-commons-payment-utilities")
 
+## Commons Issues:
+### DynamoDb
+DynamoDb generate some issues connfiguring JPA:
+```java
+@SpringBootApplication
+@EnableDynamoDBRepositories(
+    includeFilters = {
+            @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = {
+                {YOUR-REPO1}.class, {YOUR-REPO1}.class})
+    }
+)
+@ComponentScan(basePackages = {"com.github.damianwajser","{YOUR-PACKAGE}"})
+public class Application {
+   public static void main(String[] args) {
+      SpringApplication.run(Application.class, args);
+   }
+}
+```
 ## License
 The Spring Framework is released under version 2.0 of the [Apache License](http://www.apache.org/licenses/LICENSE-2.0).
