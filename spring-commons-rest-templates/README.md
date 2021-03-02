@@ -35,6 +35,20 @@ Functionality of this package is contained in Java package `com.github.damianwaj
  ```xml
  compile 'com.github.damianwajser:spring-commons-resttemplate-interceptor:{lastVersion}'
  ```
+#### Properties
+| Key | Posible Value | Reference | Default Value
+|--|--|--|--
+|spring.commons.rest.template.timeout.connection | any int | timeout connection | -1
+|spring.commons.rest.template.timeout.write | any int | timeout connection | -1
+|spring.commons.rest.template.timeout.read | any int | timeout connection | -1
+|spring.commons.rest.template.ssl.enable|boolean|enable ssl certificate in ssl_restTemplate|false
+|spring.commons.rest.template.ssl.protocol||any string|TLSv1.2
+|spring.commons.rest.template.ssl.trustStorePassword||any string|empty
+|spring.commons.rest.template.ssl.trustStore||any string|empty
+|spring.commons.rest.template.http.connection.pool.maxTotal|any int||100
+|spring.commons.rest.template.http.connection.pool.MaxDefaultPerRoute|any int||30
+
+
 ### RestTemplates
 
 Inject by default the restTemplate with:
@@ -51,6 +65,18 @@ But, if you call a snake_case endpoint, you use:
 @Qualifier("snake_template")
 private RestTemplate restTemplate;
 ````
+If you want consume ssl services with certificates, configure the properties and use this:
+````java
+@Autowired
+@Qualifier("ssl_camel_case_template")
+private RestTemplate restTemplate;
+````
+````java
+@Autowired
+@Qualifier("ssl_snake_case_template")
+private RestTemplate restTemplate;
+````
+
 ### Example
 For the example we will use an echo service, "https://httpbin.org/get", we will test it:
 ```shell script

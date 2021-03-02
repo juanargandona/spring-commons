@@ -49,6 +49,8 @@ Functionality of this package is contained in Java package `com.github.damianwaj
 
 **@Max** – validates that the annotated property has a value no larger than the value attribute
 
+**@Base64** – validates that the annotated property is a valid base64 encoded string
+
 **@Email** – validates that the annotated property is a valid email address
 
 **@Pattern** – validate that a string matches with regex parameter.
@@ -68,6 +70,8 @@ Functionality of this package is contained in Java package `com.github.damianwaj
 On the other hand some useful validations are added:
 
 **@AlphaNumeric** - Use this annotation to validate alpha-numerics strings, this annotation use @Size constraint then yoy can add that parameters (min, max). Also you can add a boolean parameter allowSpaces, that default value is true.
+
+**@Word** - Use this annotation to validate word strings, works like @AlphaNumeric but doesn't accept numbers.
 
 **@Password** - Use this annotation to validate basic passwords rules.
 

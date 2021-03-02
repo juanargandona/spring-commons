@@ -15,9 +15,8 @@
 	<description>DESC</description>
 	<url>http://github.com/damianwajser/spring-commons</url>
 
-
 	<properties>
-		<revision>1.13.1</revision>
+		<revision>1.18.2</revision>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -30,6 +29,7 @@
 		<jedis.client.version>3.3.0</jedis.client.version>
 	</properties>
 	<modules>
+		<module>spring-commons-payment-utilities</module>
 		<module>spring-commons-cache</module>
 		<module>spring-commons-actuator</module>
 		<module>spring-commons-exception</module>
@@ -157,7 +157,7 @@
 			</plugin>
 			<plugin>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>3.0.0-M4</version>
+				<version>3.0.0-M5</version>
 			</plugin>
 			<plugin>
 				<groupId>org.jacoco</groupId>
@@ -253,6 +253,19 @@
 								<phase>verify</phase>
 								<goals>
 									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.sonatype.ossindex.maven</groupId>
+						<artifactId>ossindex-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>audit-dependencies</id>
+								<phase>validate</phase>
+								<goals>
+									<goal>audit</goal>
 								</goals>
 							</execution>
 						</executions>
